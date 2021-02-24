@@ -1,0 +1,45 @@
+clear all;
+clc;
+
+filenames = importdata('filenames.txt');
+save filenames.mat
+clear all;
+clc;
+targets = importdata('targets.txt');
+save targets.mat
+clear all;
+clc;
+
+% M=csvread('../../../Y2.csv');
+% save('targets.mat','M');
+
+
+
+features_32 = importdata('dmlvh2_BLSTM_Features_32_2.txt');
+save features_32.mat;
+clear all;
+clc;
+features_64 = importdata('dmlvh2_BLSTM_Features_64_2.txt');
+save features_64.mat;
+clear all;
+clc;
+
+features_128 = importdata('dmlvh2_BLSTM_Features_128_2.txt');
+save features_128.mat;
+clear all;
+clc;
+features_256 = importdata('dmlvh2_BLSTM_Features_256_2.txt');
+save features_256.mat;
+clear all;
+clc;
+features_512 = importdata('dmlvh2_BLSTM_Features_512_2.txt');
+save features_512.mat;
+clear all;
+clc;
+features_1024 = importdata('dmlvh2_BLSTM_Features_1024_2.txt');
+save features_1024.mat;
+clear all;
+clc;
+
+
+
