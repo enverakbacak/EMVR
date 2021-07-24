@@ -63,8 +63,7 @@ import keras.backend as K
 # e = 0.5
 def c_loss(noise_1, noise_2):
     def loss(y_true, y_pred):
-         return (K.binary_crossentropy(y_true, y_pred))
-         #return (K.binary_crossentropy(y_true, y_pred) + (1/hash_bits) * (K.sum((noise_1 - noise_2)**2) )  )  
+         
          return ( (K.binary_crossentropy(y_true, y_pred)) + (K.sum(K.binary_crossentropy(noise_1, noise_2) )) * (1/hash_bits)   )
     return loss
 
