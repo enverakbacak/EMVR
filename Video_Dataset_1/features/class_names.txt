@@ -1,0 +1,6 @@
+Football   0
+Tennis     1
+Running    2
+Ski        3
+
+
