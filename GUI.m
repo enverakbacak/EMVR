@@ -22,7 +22,7 @@ function varargout = GUI(varargin)
 
 % Edit the above text to modify the response to help GUI
 
-% Last Modified by GUIDE v2.5 17-Jan-2022 11:34:44
+% Last Modified by GUIDE v2.5 18-Jan-2022 10:00:09
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -93,9 +93,15 @@ switch dataset_index
         
     case 2
         video_dir =[pwd '/Video_Dataset_2/videoFolder/']; 
-        frame_dir =[pwd '/Video_Dataset_1/Frames/']; 
+        frame_dir =[pwd '/Video_Dataset_2/Frames/']; 
         data_dir = [pwd '/Video_Dataset_2/hashCodes/'];
         feature_dir = [pwd '/Video_Dataset_2/features/'];
+        colorData = 0;    
+     case 3
+        video_dir =[pwd '/Video_Dataset_3/videoFolder/']; 
+        frame_dir =[pwd '/Video_Dataset_3/Frames/']; 
+        data_dir = [pwd '/Video_Dataset_3/hashCodes/'];
+        feature_dir = [pwd '/Video_Dataset_3/features/'];
         colorData = 0;    
 end
 % if(colorData == 1)
@@ -117,6 +123,7 @@ handles.feature_dir = feature_dir;
 set(handles.QueryName1,'String', filenames);
 set(handles.QueryName2,'String', filenames);
 set(handles.QueryName3,'String', filenames);
+
 
 
 guidata(hObject, handles);
@@ -610,7 +617,7 @@ set(handles.avg_prec,'String',num2str(avg_Precision));
       x = linspace(0,s);
       plot( Precision_AT_K )
       ylabel('Precision@k' ,'FontSize', 12)
-      xlabel('Number of Rterieved Items' ,'FontSize', 12) 
+      xlabel('The Number of Retrieved Items' ,'FontSize', 12) 
       hold on;
          
 
@@ -908,6 +915,40 @@ function avg_prec_CreateFcn(hObject, eventdata, handles)
 % handles    empty - handles not created until after all CreateFcns called
 
 % Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on selection change in QueryName4.
+function QueryName4_Callback(hObject, eventdata, handles)
+% hObject    handle to QueryName4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: contents = cellstr(get(hObject,'String')) returns QueryName4 contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from QueryName4
+imindex = get(hObject,'Value');
+video_dir = handles.video_dir;
+frame_dir = handles.frame_dir;
+fname = [handles.filenames{imindex}];
+frame = [frame_dir fname '/' fname '_2.jpg'];
+
+axes(handles.axes48);
+imshow(frame);  axis image;
+
+handles.q3Idx = imindex;
+guidata(hObject, handles);
+
+
+% --- Executes during object creation, after setting all properties.
+function QueryName4_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to QueryName4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
 %       See ISPC and COMPUTER.
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
